@@ -1,0 +1,33 @@
+<div class="account_row">
+	<div class="ar_left">
+		Your offer for guiding is…<span class="required-field">*</span>
+		<div class="left_hints">
+			You’ll be able to give unique offers to everyone, this is just a list price
+		</div>
+	</div>
+	<div class="ar_right"><%= f.text_field :rate %> <div class="pricename">USD/hour</div><div class="clearfix"></div> <div class="smallhint">If you would just like to guide for free, leave 0 in this field</div></div>
+	<div class="clearfix"></div>
+</div>
+<div class="account_row">
+	<div class="ar_left">
+		Detailed introduction...
+		<div class="left_hints">You can tell more about yourself here</div>
+	</div>
+	<div class="ar_right">
+		<%= f.text_area :long_introduction %>
+	</div>					
+	<div class="clearfix"></div>
+</div>
+<div class="account_row">
+	<div class="ar_left">You can travel in your city by...<span class="required-field">*</span></div>
+	<div class="ar_right" id="transportation_methods_div">
+		<% TransportationMethod.order(:name).each do |tm| %>
+			<div class="acc_chb sss-chb">
+				<%= check_box_tag "guide[transportation_method_ids][]", tm.id, @guide.transportation_method_ids.include?(tm.id) %>
+				<%= label_tag tm.name, nil, class: "checkbox_text" %>
+				<div class="clearfix"></div>
+			</div>
+	  <% end %>
+	</div>
+	<div class="clearfix"></div>
+</div>

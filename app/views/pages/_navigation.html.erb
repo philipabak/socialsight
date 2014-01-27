@@ -1,0 +1,22 @@
+<div class="content-navigation">	
+<div class="hiw-navigation">		 
+	<div class="hiw-nav-text">Still haven't joined <br/>our movement?</div>	
+	<div class="pd_name">Be a guide in your city.</div>	
+	<div class="hiw-nav-text">Show traveller friends why you love your city</div>
+	<div class="fs_joinus">
+		<a class="showjoinus sss-button2 blue" href="<%= current_user.present? ? edit_guide_url : "javascript:void(0);"%>">
+		Join as a guide
+		</a>
+	</div>
+	<div class="hiw-nav-text2">it only take few minutes</div>
+</div>
+
+<div class="htsu-navigation">
+	<ul class="htsu-navmenu">			
+		<li><a href="http://support.socialsightseeing.com" target="_blank">Help center</a></li>
+		<li><%= link_to 'Terms of Service', terms_of_use_path %></li>
+		<li><%= link_to 'Privacy Policy', privacy_policy_path %></li>
+	</ul>
+</div>
+<div class="clearfix"></div>
+</div>

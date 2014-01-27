@@ -1,0 +1,8 @@
+if ($('#new_comment').length > 0) {
+  $('#new_comment').html("<%= j render partial: 'guides/comment_editor'%>")
+} else{
+  $('#reviews').after("<%= j render partial: 'guides/comment_editor'%>")
+}
+
+set_thumbs_by_rating(<%= @comment.rating == -1 ? -1 : 1 %>)
+$('#new_comment_stars>div').click(function(e) {thumbs_handler(e);});

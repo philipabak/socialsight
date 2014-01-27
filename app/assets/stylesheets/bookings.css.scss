@@ -1,0 +1,111 @@
+// Place all the styles related to the Bookings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.booking-header {
+  font-size: 16px;
+  width: 100%;
+  margin: 10px 0;
+  font-weight: 700;
+}
+.bookings h2 {
+	font-weight: 500;
+	font-size: 14px;
+}
+
+.booking-title {
+  font-size: 24px;
+  padding: 20px 20px;
+}
+
+.fake-text-area {
+  border: none;
+  box-shadow: none;
+  resize: none;
+  padding: 0;
+  margin: 0;
+  height: initial;
+  width: 100%;
+}
+
+.booking-details {
+  font-size: 12px;
+  font-weight: bold;
+  color:#25A63A;
+  font-size: 16px;
+  padding: 0 0 0 20px;
+  background: image-url("icon_pipe2.png") left 3px no-repeat;
+}
+
+.bookings-avatar-cell {
+  width: 200px;
+}
+
+.bookings-avatar-cell img {
+  max-width: 50px;
+}
+
+.bookings-table {
+  width: 100%;
+  margin: 20px 0 80px 0;
+  border-bottom: 1px solid #E0E0E0;  
+}
+.bookings-table td {
+	padding: 20px;
+	border-top: 1px solid #E0E0E0;
+}
+.booking-id {
+	color:#bdbdbd;
+	font-size: 12px;
+	padding: 10px 0 0 0;
+}
+.bookings-table td.booking-id-td {
+	border:0;
+}
+.bookings-table tr:nth-child(2n+1) td {
+	background: #f8f8f8;
+}
+.booking-completed-date{
+  font-size: 16px;
+  font-weight: 700;
+  padding: 0 0 10px 0;
+}
+.booking-options-cell{
+  padding-left: 20px;
+}
+.booking-options-cell a,
+.booking-options-cell a:visited,
+.booking-options-cell a:active {
+  font-size:12px;
+  font-weight: 700;
+}
+.bookings-imgwrp {
+  float: left;
+  display: inline;
+  width: 70px;
+}
+.bookings-namewrp {
+  font-size: 16px;
+  padding: 0 20px 20px 0;
+  float: left;
+  display: inline;
+}
+
+.bookings-namewrp a,
+.bookings-namewrp a:visited,
+.bookings-namewrp a:active {
+	font-weight: 700;
+}
+
+.booking-row {
+  border-top: 1px solid #EEE;
+}
+a.booking_completed_link,
+a.booking_completed_link:visited,
+a.booking_completed_link:hover,
+a.booking_completed_link:active {
+	height: 54px;
+	line-height: 54px;	
+	display: block;
+	padding: 0 20px;
+	text-decoration: none;
+}

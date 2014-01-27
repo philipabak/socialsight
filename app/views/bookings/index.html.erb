@@ -1,0 +1,126 @@
+<div class="bookings">
+  <div class="container">
+    <%= render 'shared/account_menu', tab: 'bookings' %>
+    <div class="am_tabs_contents">
+      <div class="account_box">
+        <div id="tab_bookings">
+          <div class="pd_name">Bookings</div>
+          <div class="booking-header">Open bookings</div>
+		  <% if @accepted_bookings.empty? %>
+              <center><h2>There are no accepted booking!</h2></center>
+          <% else %>		  
+          <table class="bookings-table" cellpadding="0" cellspacing="0">
+            <% @accepted_bookings.each do |b| %>
+                <% partner = b.user==current_user ? b.guide.user : b.user %>
+                <tr class="booking-row">
+				  <td class="bookings-avatar-cell">
+                    <div class="bookings-imgwrp"><%= image_tag partner.avatar.url(:thumb) %></div>
+                    <div class="bookings-namewrp">
+						<% if partner.is_guide? %>
+							<%= link_to partner.short_name, "/#{partner.guide.slug}" %>
+						<% else %>
+							<%= partner.short_name %>
+						<% end %>
+					</div>
+					<div class="clearfix"></div>
+					<div class="booking-id">
+                      Booking ID: #<%= b.id %>
+                    </div>
+                  </td>                  
+                  <td>                    
+                    <%= simple_format(b.message.message_text) %>
+                    <div class="booking-details">
+                      <% if b.guide.user == current_user %>
+                          <%= partner.short_name %> has accepted your offer of <%= b.price %>
+                          USD (<%= b.updated_at.strftime("%Y.%m.%d") %>)
+                      <% else %>
+                          You have accepted <%= b.guide.user.short_name %>'s offer of <%= b.price %>
+                          USD (<%= b.updated_at.strftime("%Y.%m.%d") %>)
+                      <% end %>
+                      <% b.booking_histories.each do |h| %>
+                          <div>
+                            <% if h.user == current_user %>
+                                You have marked it as "<%= h.new_status.capitalize! %>"
+                            <% else %>
+                                <%= h.user.short_name %> has marked it as "<%= h.new_status.capitalize! %>"
+                            <% end %>
+                            (<%= h.date.strftime("%Y.%m.%d") %>)
+                          </div>
+                      <% end %>
+                    </div>
+                  </td>
+                  <td>
+                    <%= link_to "Mark as completed", change_booking_status_url(:status => "COMPLETED",
+                                                     :id => b.id), class: "booking_completed_link sss-button2 blue" %>
+                  </td>
+                </tr>
+            <% end %>
+          </table>
+         <% end %>
+
+
+          <div class="booking-header">Closed bookings</div>
+		  <% if @completed_bookings.empty? %>
+              <center><h2>There are no completed booking!</h2></center>          
+		  <% else %>
+          <table class="bookings-table" cellpadding="0" cellspacing="0">
+            <% @completed_bookings.each do |b| %>
+                <% partner = b.user==current_user ? b.guide.user : b.user %>
+                <tr class="booking-row">
+                 <td class="bookings-avatar-cell">
+                    <div class="bookings-imgwrp"><%= image_tag partner.avatar.url(:thumb) %></div>
+                    <div class="bookings-namewrp">
+						<% if partner.is_guide? %>
+							<%= link_to partner.short_name, "/#{partner.guide.slug}" %>
+						<% else %>
+							<%= partner.short_name %>
+						<% end %>
+					</div>
+					<div class="clearfix"></div>
+					<div class="booking-id">
+                      Booking ID: #<%= b.id %>
+                    </div>
+                  </td>                  
+                  <td>
+                   
+                    <%= simple_format(b.message.message_text) %>
+
+                    <div class="booking-details">
+                      <% if b.guide.user == current_user %>
+                          <%= partner.short_name %> has accepted your offer of <%= b.price %>
+                          USD (<%= b.updated_at.strftime("%Y.%m.%d") %>)
+                      <% else %>
+                          You have accepted <%= b.guide.user.short_name %>'s offer of <%= b.price %>
+                          USD (<%= b.updated_at.strftime("%Y.%m.%d") %>)
+                      <% end %>
+                      <% b.booking_histories.each do |h| %>
+                          <div>
+                            <% if h.user == current_user %>
+                                You have marked it as "<%= h.new_status.capitalize! %>"
+                            <% else %>
+                                <%= h.user.short_name %> has marked it as "<%= h.new_status.capitalize! %>"
+                            <% end %>
+                            (<%= h.date.strftime("%Y.%m.%d") %>)
+                          </div>
+                      <% end %>
+                    </div>
+                  </td>
+                  <td class="booking-options-cell">
+                    <% if b.is_completed? %>
+                        <div>
+                          <div>Completed on:</div>
+                          <div class="booking-completed-date"><%= b.updated_at.strftime("%Y.%m.%d") %></div>
+                        </div>
+                    <% end %>
+                    <%= mail_to 'info@socialsightseeing.com', 'Give feedback',
+                        subject: "Feedback about booking:#{b.id}" %>
+                  </td>
+                </tr>				
+            <% end %>
+          </table>
+         <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

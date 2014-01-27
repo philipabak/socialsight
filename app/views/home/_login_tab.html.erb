@@ -1,0 +1,31 @@
+<a href="/auth/facebook" id="fb_login">
+  <div class="signupface2"></div>
+  <div class="singupface_text">
+    We will never post anything without your permission.
+  </div>
+</a>  
+<div class="lr_or"><span>or</span></div>
+<div id="login_msg">
+  </div>
+ <%= form_tag({controller: "sessions"}, id:"loginform", remote: true) do %>
+  <div class="lr_row">
+    <div class="lr_left">E-mail</div>
+    <div class="lr_right">
+      <%= text_field_tag 'email', nil, class: "inputbox" %>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="lr_row">
+    <div class="lr_left">Password</div>
+    <div class="lr_right">
+      <%= password_field_tag 'password', nil, class: "inputbox" %>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="reset_pass">
+    <%= link_to 'Forgot password', new_password_reset_path %>
+  </div>    
+  <input type="submit" name="login" value="Login" class="lr_registration" />
+  
+<% end %>   

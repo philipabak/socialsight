@@ -1,0 +1,17 @@
+<div class="white_box" id="new_comment">
+  <div class="wbs_head">Rate</div>
+  <div class="wbs_content review_form">   
+    <%= form_for [@guide, @comment], remote: true  do |f| %>
+    <%= hidden_field_tag "rating", 1 %>
+    <%= f.text_area :body %>
+    <br />  
+    <div id="new_comment_stars" class="gc_stars">
+      <div id="new_positive_rating" class="thumbs_up_empty"></div>
+      <div id="new_negative_rating" class="thumbs_down_empty"></div>
+      <div class="clearfix"></div>
+    </div>            
+    <%= submit_tag :'Send review', :class => "sss-button3 rev_button"%>
+    <div class="clearfix"></div>
+    <% end %>
+  </div>
+</div>

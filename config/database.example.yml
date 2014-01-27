@@ -1,0 +1,16 @@
+development: &psql
+  adapter: postgresql
+  encoding: unicode
+  database: social_sightseeing_development
+  pool: 5
+  host: localhost
+  username: postgres
+  password: postgres
+
+test:
+  <<: *psql
+  database: social_sightseeing_test
+
+production:
+  <<: *psql
+  database: social_sightseeing_production

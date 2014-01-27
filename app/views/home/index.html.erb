@@ -1,0 +1,122 @@
+<div class="front_search">
+  <div id="headerimgs">
+		<div id="headerimg1" class="headerimg"></div>
+		<div id="headerimg2" class="headerimg"></div>
+  </div>
+  <div id="search">
+	  <div class="container">
+			<div class="fs_slogen">
+			  Connecting travelers to locals.
+			</div>
+			
+			<div class="fs_search_box col-md-7 col-sm-12">
+				<div class="fs_font_style1">Find your perfect local guide.</div>
+				<div class="fs_font_style2">Discover the world through the eyes of a local.</div>
+				<div class="fs_input_wrap">
+					<%= form_tag(city_search_path, :method => "get") do %>
+					<%= text_field_tag :city_search, nil, class: 'search_input',
+										placeholder: 'Where are you going?' %>   
+					<input type="submit" class="search_button blue" value="Search" name="Search" />
+					<% end %>      
+					<div class="clearfix"></div>
+				</div>
+			
+			<div style="display:none">
+				<div class="fs_font_style3"><strong>Popular:</strong>
+				<% @popular_cities.each do |city| %>
+					<%= link_to city.name, "/#{city.slug}" %>,
+				<% end %>
+			</div>
+
+				</div>
+			</div>
+			
+			<div class="fs_joinus_box col-md-5 col-sm-12">
+				<div class="fs_font_style1">Be a guide in your city.</div>
+				<div class="fs_font_style2">Show traveller friends why you love your city.</div>
+				<div class="fs_joinus">
+					<a href="#" class="showjoinus sss-button2 blue" <%=current_user.present? ? "data-redirect=#{edit_guide_url}" : ""%>>Join as a guide</a>
+				</div>
+				<div class="fs_font_style4">it only takes a few minutes</div>
+			</div>
+		
+	  </div>
+  </div>
+
+</div>
+
+<div class="front_help">  
+  <div class="container">    
+    <div class="fh_font_style5">They already joined the movement:</div>
+		<div class="already_joined_wrap anythingFader">
+			<div class="wrapper">
+				<ul>
+					<% (0...@rnd_guides.size).step(4) do |i| %>
+					<li>
+						<%= render partial: "guide_card", collection: @rnd_guides[i..i+3] %>
+						<div class="clearfix"></div>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="front_how_works">  
+  <div class="container">    
+       
+		<div class="fhw_left">
+			<div class="fs_font_style1">How Social Sightseeing works</div>
+			Social Sightseeing means that you discover the city (or the country) with a 
+			like-minded local in your own tempo, seeing not only the tourist attractions, 
+			but the real city - and making new friends along the way.
+			<br/>
+			<br/>
+			<a class="showjoinus fhw_join" href="javascript:void(0);">Join our movement now!</a>
+		</div>
+
+		<div class="fhw_right">
+			<a href="http://fast.wistia.net/embed/iframe/nr581xjjr9?autoPlay=true&controlsVisibleOnLoad=true&popover=true&version=v1&videoHeight=450&videoWidth=800&volumeControl=true" class="player wistia-popover[height=450,width=800]">
+			<img src="assets/video.png" alt="How Social Sightseeing works" />
+			</a>
+			<script charset="ISO-8859-1" src="http://fast.wistia.com/static/popover-v1.js"></script>	
+		</div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+
+<div class="front_why">  
+  <div class="container">    
+       
+		<div class="fw_left">
+			<div class="fs_font_style1">Why travel in a social way?</div>
+			<ul>
+				<li>Discover the real city</li>
+				<li>Be part of the local culture</li>
+				<li>Have unique experiences</li>
+				<li>Meet new people</li>
+				<li>Have more fun</li>
+				<li class="fw_rmore"><%= link_to 'Read more', how_it_works_path %></li>
+			</ul>
+
+		</div>
+
+		<div class="fw_right">
+			<div class="fs_font_style1">Why join as a guide?</div>
+			<ul>
+				<li>Earn money</li>
+				<li>Meet new people</li>
+				<li>Practice foreign language </li>
+				<li>Know your own city better </li>
+				<li>Have fun</li>
+				<li class="fw_rmore"><%= link_to 'Why join as a guide', why_join_as_a_guide_path %></li>
+			</ul>
+		</div>
+    <div class="clearfix"></div>
+  </div>
+</div>

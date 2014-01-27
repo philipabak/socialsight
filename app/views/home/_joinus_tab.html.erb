@@ -1,0 +1,68 @@
+<a href="/auth/facebook" id="fb_signup">
+  <div class="signupface"></div>
+  <div class="singupface_text">
+    We will never post anything without your permission.
+  </div>
+</a>
+<div class="lr_or"><span>or</span></div>
+
+<%= form_for User.new, url: user_path do |f| %>
+  <%= hidden_field_tag "city[name]"        %>
+  <%= hidden_field_tag "city[country_name]"%>
+  <%= hidden_field_tag "city[longitude]"   %>
+  <%= hidden_field_tag "city[latitude]"    %>
+
+  <div class="lr_row">
+    <div class="lr_left"><%= f.label :first_name %></div>
+    <div class="lr_right"><%= f.text_field :first_name, class: "inputbox" %></div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="lr_row">
+    <div class="lr_left"><%= f.label :last_name %></div>
+    <div class="lr_right"><%= f.text_field :last_name, class: "inputbox" %></div>
+    <div class="clearfix"></div>
+  </div>        
+  <div class="lr_row">
+    <div class="lr_left"><%= f.label :email %></div>
+    <div class="lr_right"><%= f.text_field :email, class: "inputbox" %></div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="lr_row">
+    <div class="lr_left"><%= f.label :password %></div>
+    <div class="lr_right"><%= f.password_field :password, class: "inputbox" %></div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="lr_row">
+    <div class="lr_left"><%= f.label :password_confirmation %></div>
+    <div class="lr_right"><%= f.password_field :password_confirmation,
+                                                class: "inputbox" %></div>
+    <div class="clearfix"></div>
+  </div>            
+  <div class="lr_row">
+    <div class="lr_left">I am</div>
+    <div class="lr_right">
+      <%= f.select :sex, options_for_select(["Female","Male"]) %>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="lr_row">
+    <div class="lr_left">Birthday</div>
+    <div class="lr_right">
+      <%= f.date_select :birth_date,
+                         start_year: 1930,
+                         end_year: Time.now.year-14,
+                         default: { year:Time.now.year-25 },
+                         :order => [:day, :month, :year] %>
+      </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="lr_row">
+    <div class="lr_left">City</div>
+    <div class="lr_right">
+      <%= text_field_tag 'new_guide_city_search',
+                          nil, class: "inputbox" %>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <%= f.submit 'Join us', class: "lr_registration" %> 
+<% end %>

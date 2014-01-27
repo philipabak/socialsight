@@ -1,0 +1,55 @@
+@import url(http://fonts.googleapis.com/css?family=Inika);
+@import url(http://fonts.googleapis.com/css?family=Gloria+Hallelujah);
+* {
+	padding:0;
+	margin:0;
+}
+
+html { 
+  background: url(images/bg.jpg) no-repeat center bottom fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+a, a:visited, a:active {
+	color:#0ba7dd;
+	font-size: 15px;
+}
+
+#pagewrap {
+	width: 853px;
+	margin: 0 auto;
+	background: #ffffff;
+	border-radius: 20px;
+	padding: 40px;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3) inset, 0 0 20px 0 rgba(0, 0, 0, 0.7);
+}
+.hithere {
+	color: #6eb73d;
+	font-family: "Gloria Hallelujah";
+	font-size: 26px;
+}
+.text {
+	width: 343px;
+	float: right;
+	display: inline;
+	color: #515151;
+}
+.right_text {
+	padding: 10px 0;
+	font-family: Helvetica;
+	font-size: 15px;
+}
+.letsfill {
+	width: 358px;
+	height: 71px;
+	background: url(images/letsfill.jpg) no-repeat center bottom; 
+	margin: 20px 0 0 -20px;
+}
+.letsfill a {
+	display: block;
+	width: 358px;
+	height: 71px;
+}

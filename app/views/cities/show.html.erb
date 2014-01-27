@@ -1,0 +1,35 @@
+<% content_for :title do %><%="#{@city.name} sightseeing, local guides, tourguides"%><% end %>
+<% content_for :keywords do %><%="#{@city.name}, social, sightseeing, local, guides, guiding, tourguide, guide" %><% end %>
+<% content_for :description do %><%="Discover #{@city.name} through the eyes of a local. We help you find your perfect local guide."%><% end %>
+<div class="container guides_setfixed">
+  <div class="guides_head" style="background: url('assets/default.png') center bottom no-repeat;">
+  <div class="gh_transparent">
+    <div class="guides_head_left"><h1>Guides in <span><%= @city.name %></span></h1></div>
+    <!--<div class="guides_head_right"><div class="icon_info">You can't see <strong>some guides</strong> without <a class="login-trigger" href="#">logging in</a>. Find out <a href="">why</a>!</div></div>-->
+    <div class="clearfix"></div>
+    <div class="guides_head_bot_left">
+  	<div class="guides_filter">
+  		<%= form_tag({controller: "cities", action: "show"}, :method => "get", class:"old-search", id:'search_form', remote: true) do %>
+  		<%= select_tag :sort_by,   options_for_select(Guide::SORT_BY) %>
+  		<%= select_tag :gender,    options_for_select(User::GENDERS), include_blank: true %>
+  		<%= select_tag :language,  grouped_options_for_select(@languages), include_blank: true, class: 'wide-filter' %>
+  		<%= select_tag :age_group, options_for_select(Guide::AGE_GROUPS) %>
+  		<%= select_tag :interest,  options_from_collection_for_select(Interest.order(:name), "id", "name"), :include_blank => true%>
+  		<% end %>
+  	</div> 
+    </div>
+    <div class="guides_head_bot_right">
+  	showing <span id="showing_count"></span>
+      of <span id="total_count"><%=@guides.total_count%></span> guides
+    </div>
+  </div>
+  </div>
+
+  <div class="guide_cards">
+    <%= render @guides, city: @city %>
+  </div>
+  <div class="clearfix"></div>
+  <div class="paginator">
+    <%= paginate @guides %>
+  </div>
+</div>

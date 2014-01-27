@@ -1,0 +1,143 @@
+<% content_for :title do %><%="#{@city.name} sightseeing, local guide: #{@guide.user.short_name}"%><% end %>
+<% content_for :keywords do %><%="#{@city.name}, #{@guide.user.short_name}, social, sightseeing, local, guides, guiding, tourguide, guide" %><% end %>
+<% content_for :description do %><%="Discover #{@city.name} through the eyes of #{@guide.user.short_name}"%><% end %>
+<div class="profile">
+  <div class="container">
+    <%= render partial: 'shared/breadcrumbs', 
+               locals: {breadcrumbs: @breadcrumbs} %>
+    <div class="profile_left">
+      <div class="grey_box profile_details">
+        <div class="pd_left">
+          <div class="pd_image">
+            <%= link_to image_tag(@guide.user.avatar.url :large),
+            @guide.user.avatar.url(:original),
+            class: "lightbox", rel:"profile" %>        
+            <div class="pd_more_image">
+              <% @guide.guide_images.each do |guide_image| %>
+              <%= link_to image_tag(guide_image.image.url :thumb_mini),
+                          guide_image.image.url(:original),
+                          class: "lightbox", rel:"profile" %>
+              <%end%>
+              <div class="clearfix"></div>
+            </div>
+
+          </div>            
+        </div>
+        <div class="pd_right">
+          <div class="pd_name"><%=@guide.user.short_name%></div>            
+          <div class="pd_location"><%=@guide.cities.first.formatted_with_country%></div>                  
+          <div class="pd_desc"><%=@guide.short_introduction%></div>          
+          <div class="clearfix"></div>
+          
+
+<table width="100%" border="0" class="pd_table" cellspacing="0" cellpadding="0">
+<tr>
+<td width="94" class="pd_td" style="padding-top:3px"><strong>Age:</strong></td>
+<td class="pd_td2" style="padding-top:3px"><%=@guide.user.age%></td>
+</tr>
+<tr>
+<td class="pd_td" style="padding-top:3px"><strong>Rating:</strong></td>
+<td class="pd_td2" style="padding-top:3px"><% if @guide.positive_review_count > 0%>
+                <strong style="color:#0A8B00">
+                  <%=@guide.positive_review_proportion.round(0)%>% positive&nbsp;&nbsp;
+                </strong>
+                <a href="#reviews" style="font-size:13px;font-weight:600;"><%=@guide.comment_threads.count%> reviews</a>
+              <% else %>
+                no reviews yet
+              <% end %></td>
+</tr>
+<tr>
+<td class="pd_td" style="padding-top:3px"><strong>Member since:</strong></td>
+<td class="pd_td2" style="padding-top:3px"><%=@guide.created_at.strftime('%Y. %b. %d.')%></td>
+</tr>
+<tr>
+<td class="pd_td" style="padding-top:3px"><strong>Languages:</strong></td>
+<td class="pd_td2" style="padding-top:3px"><%=@guide.spoken_languages_with_levels %></td>
+</tr>
+<tr>
+<td class="pd_td" style="padding-top:3px"><strong>Interests:</strong></td>
+<td class="pd_td2" style="padding-top:3px"><%=@guide.interests_with_commas%></td>
+</tr>
+</table>
+
+     
+        </div>
+        <div class="clearfix"></div> 
+        <table width="100%" height="73" cellspacing="0" cellpadding="0" border="0" class="pd_table3">
+        <tr>
+        <td align="center" valign="middle"><% if @guide.user.is_fb_verified? %>
+          <div class="pd_fb_yes"><img src="assets/icon_facebook5.png" style="position:relative; left: -6px; top: -2px;" align="absmiddle" />Facebook verified <div class="pd_fb_friends">(<%=@guide.user.fb_friend_count%> friends)</div></div>
+        <% else %>
+          <div class="pd_fb_no"><img src="assets/icon_facebook5_no.png" style="position:relative; left: -6px; top: -2px;" align="absmiddle" />Facebook not verified</div>
+        <% end %></td>
+        <td align="center" valign="middle" class="pd_td3" style="border-right:1px;"><% if @guide.is_professional? %>
+          <div class="pd_pro_yes"><img src="assets/icon_pro2.png" style="position:relative; left: -6px; top: -2px;" align="absmiddle" />Professional guide</div>
+        <% else %>
+          <div class="pd_pro_no"><img src="assets/icon_pro2_no.png" style="position:relative; left: -6px; top: -2px;" align="absmiddle" />Not a professional guide</div>
+        <% end %></td>
+        <td align="center" valign="middle" class="pd_td3" style="border-right:1px; display:none;"><% if @guide.is_phone_verified? %>
+          <div class="pd_phone_yes"><img src="assets/icon_phone2.png" style="position:relative; left: -6px; top: -2px;" align="absmiddle" />Phone number verified</div>
+        <% else %>
+          <div class="pd_phone_no"><img src="assets/icon_phone2_no.png" style="position:relative; left: -6px; top: -2px;" align="absmiddle" />Phone number not verified</div>
+        <% end %></td>
+        </tr>
+        </table>
+
+        <div class="clearfix"></div>
+      </div>
+      <div class="white_box" id="long_introduction">
+        <div class="wbs_head">Detailed introduction</div>
+        <div class="wbs_content">
+          <%=@guide.long_introduction%>
+        </div>
+      </div>
+      <% if @guide.has_review?%>        
+        <%= render 'reviews' %>
+      <% end %>
+
+      <% if current_user && @guide.can_be_rated_by?(current_user) %>
+        <%= render 'comment_editor' %>
+      <% end %>
+    </div>
+    <div class="profile_right">
+      <div class="white_box">
+        <div class="wbs_head">About <%=@guide.user.first_name%></div>
+        <div class="wbs_content abtg">
+          <div class="abtg_text1">I'm happy to do:</div>
+          <div class="pr_icons">
+            <% @guide.rates.each do |rate| %>
+              <div class="<%=rate.service.icon_css_class%> tooltip"
+                   title="<%="<strong>#{rate.service.name}:</strong> #{rate.service.description}"%> <a href=''>More info...</a>">
+                <a href="">
+                  <%=rate.service.name%>
+                </a>
+              </div>      
+            <% end %>
+            <div class="clearfix"></div>
+            <div class="pr_myoffer">
+              <strong>My offer:</strong>
+              <% if @guide.rate > 0 %>
+                <%= number_to_currency @guide.rate, precision:0 %>/ hour
+              <% else %>
+                Free
+              <%end%>        
+            </div>
+          </div>            
+
+            <div class="pr_hire">
+              <div class="sss-button2 blue hireme">
+                <% if current_user %>
+                  <%=link_to "Contact me", new_message_thread_path(:receiver_id => @guide.user.id)%>
+                <% else %>
+                  <%=link_to "Contact me", "#" , class: "showjoinus"%>
+                <% end %>
+              </div>
+
+              <div class="clearfix"></div>  
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>

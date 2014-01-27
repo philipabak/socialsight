@@ -1,0 +1,23 @@
+<%= render "messages/form",:html => { :multipart => true }, :f => f %>
+
+<% if (can_offer?) %>
+    <tr>
+      <td><div class="message-label">Quote:</div></td>
+      <td class="sss-chb">
+        <%= check_box_tag :need_booking, 0, false, :style => "width:15px!important", :class=> "sss-chb" %>     
+		<label for="need_booking_input" class="checkbox_text need-booking-data-label">This is a quote. <a class='tooltip' title='You can set the price here, which can be accepted with a reply message by the traveler. It is the best way to get a new booking.'>Why should I make a quote?</a></label>    
+	</td>
+    </tr>
+    <%= f.fields_for :booking do |builder| %>
+        <%= render "booking/form", :f => builder %>
+    <% end %>
+<% end %>
+<% if @message_thread.has_active_booking? && @message_thread.active_booking.user == current_user %>
+    <tr>
+      <td></td>
+      <td class="sss-chb">
+        <%= check_box_tag :accept_booking, 0,false, :style => "width:15px!important" %>
+        <%= label_tag :accept_booking_input, "I accept the offer of $#{@message_thread.active_booking.price} USD",:class=> "checkbox_text" %>
+      </td>
+    </tr>
+<% end %>

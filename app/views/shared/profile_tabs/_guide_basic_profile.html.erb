@@ -1,0 +1,82 @@
+<div class="account_row">
+  <div class="ar_left">Picture<span class="required-field">*</span></div>
+  <div class="ar_right">
+    <% if @user.avatar? %>
+      <%=image_tag @user.avatar(:medium) %>
+    <% end %>
+	<div class="clearfix"></div>
+    <%= f.fields_for :user do |u|%>
+      <%= u.file_field :avatar %>
+    <% end %>
+  </div>       
+  <div class="clearfix"></div>                           
+</div> 
+
+<div class="account_row">
+	<div class="ar_left">You’ll be a guide in…<span class="required-field">*</span></div>
+	<div class="ar_right">
+	  <%= hidden_field_tag "city[name]"        %>
+	  <%= hidden_field_tag "city[country_name]"%>
+	  <%= hidden_field_tag "city[longitude]"   %>
+	  <%= hidden_field_tag "city[latitude]"    %>
+		<%= text_field_tag 'new_guide_city_search', @user.cities.first, class: "inputbox" %>
+	</div>					
+	<div class="clearfix"></div>
+</div>
+
+
+<div class="account_row">
+	<div class="ar_left">
+		Someone should choose you because…<span class="required-field">*</span>
+		<div class="left_hints">
+			Write down briefly (1-2 sentences) why someone should choose
+			you as a guide. Maximum 200 letters.
+		</div>
+	</div>
+	<div class="ar_right">
+		<%= f.text_area :short_introduction %>
+		<div id="short_introduction_remaining_length" class="float_right"></div>			
+	</div>
+
+	<div class="clearfix"></div>
+</div>
+
+<div class="account_row">
+	<div class="ar_left">You can speak…<span class="required-field">*</span></div>
+	<div class="ar_right">
+		<div id="spoken_language_items" class="items" id="spoken_languages_div">
+		<%= f.nested_fields_for :spoken_languages do |sl_f|%>
+			<fieldset class="item">	
+				<%= sl_f.select :language_id, Language.order(:name).collect {|x| [x.name, x.id]} %>
+				<%= sl_f.select :language_level_id, LanguageLevel.all.collect { |x| [x.name, x.id]}%>
+				<a href="#" class="remove">remove</a>							 
+				<%= sl_f.hidden_field :id %>
+				<%= sl_f.hidden_field :_destroy %>
+			 </fieldset>
+  	<% end %>
+  	</div>
+  	<a href="#" class="add">add language</a>
+  </div>			
+	<div class="clearfix"></div>
+</div>
+
+<div class="account_row">
+	<div class="ar_left">You would like to do…<span class="required-field">*</span></div>
+	<div class="ar_right" id="services_div">
+		<% Service.order(:name).each do |service| %>
+			<div class="arr_ser_left">
+				<div class="acc_chb sss-chb">
+					<%= check_box_tag "guide[service_ids][]", service.id, @guide.service_ids.include?(service.id) %>								
+				</div>
+			</div>
+			<div class="arr_ser_right">
+				<div class="gp_<%=service.icon_css_class%>"><%= label_tag service.name %></div>
+				<div class="gp_ser_desc"><%= service.description %></div>																
+				<div class="clearfix"></div>												
+			</div>
+			<div class="clearfix"></div>																		
+	  <% end %>
+	</div>					
+	<div class="clearfix"></div>
+</div>
+		

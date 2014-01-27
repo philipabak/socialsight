@@ -1,0 +1,60 @@
+<div class="account_row">
+	<div class="ar_left">You are interested in…<span class="required-field">*</span></div>
+	<div class="ar_right" id="guide_interests_div">
+	
+		<% Interest.order(:name).each do |interest| %>
+			<div class="acc_chb sss-chb">
+				<%= check_box_tag "guide[interest_ids][]", interest.id, @guide.interest_ids.include?(interest.id) %>
+				<%= label_tag interest.name, nil, class: "checkbox_text" %>
+				<div class="clearfix"></div>
+			</div>
+	  <% end %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="account_row">
+	<div class="ar_left">
+		Professional
+		<div class="left_hints">Are you a professional guide?</div>
+	</div>
+	<div class="ar_right">
+	  <div class="acc_chb sss-chb" style="width: 400px;">
+			<%= f.check_box :is_professional %>
+			<div style="padding-top:2px;">Yes, I'm a professional guide, and I have a licence</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="account_row">
+	<div class="ar_left">More pictures...</div>
+	<div class="ar_right">
+	  
+		
+			<%= f.fields_for :guide_images do |f_image| %>		
+				<% unless f_image.object.new_record? %>
+				<div class="more_image_images">
+					<%= image_tag f_image.object.image.url(:thumb) %>
+					<br/>
+					<%= f_image.check_box :_destroy %>
+					<%= f_image.label 'delete' %>
+				</div>
+				<% end %>  			
+			<% end %>
+		
+			<div class="clearfix"></div>
+			<%= f.fields_for :guide_images do |f_image| %>			
+				<% if f_image.object.new_record? %>
+				
+				<%= f_image.file_field :image %>
+				<br/>
+				<% end %>  				
+			<% end %>		
+			
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+
+

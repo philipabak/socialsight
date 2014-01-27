@@ -1,0 +1,17 @@
+<div class="message-threads-header-options">
+  <span class="pd_name">Messages</span>
+
+  <div class="message-threads-header-options-links">
+    
+    <%= link_to image_tag("trash.png"), delete_selected_threads_url, :id => "delete_selected_threads", :class => 'hidden' %>
+    <div id="message_threads_more_option_container" class="message-threads-more-option-container hidden">
+      <span id="message_threads_more_option">MORE</span>
+      <div id="message_thread_more_options">
+        <ul>
+          <li><%= link_to "Mark as read", change_message_threads_status_url, :id => "mark_selected_threads_as_read" %></li>
+          <li><%= link_to "Mark as unread", change_message_threads_status_url, :id => "mark_selected_threads_as_unread" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

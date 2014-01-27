@@ -1,0 +1,5 @@
+$('.guide_cards').append("<%= j render @guides, city: @city %>"); 
+$('.paginator').html('<%= j paginate @guides %>');
+originalCode();
+update_guide_showing_count();
+update_guide_total_count(<%=@guides.total_count%>);

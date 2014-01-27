@@ -1,0 +1,13 @@
+<% if @guide.review_count > 1 %>
+  //Insert comment on top
+  $('#reviews div.pd_review_item:first-child').before(
+	"<%= j render partial: 'guides/comment', object: @comment %>");
+  //Jump to reviews top
+  $(document).scrollTop( $("#reviews").offset().top);
+  //Highlight new comment 
+  
+<% else %>
+  $('#long_introduction').after("<%= j render 'guides/reviews' %>");  
+<% end %>
+
+$('#new_comment').remove();

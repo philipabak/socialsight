@@ -1,0 +1,30 @@
+<div class="profile">
+  <div class="container">
+    <%= render 'shared/account_menu', tab: 'guide' %>
+    <div class="am_tabs_contents"> 
+      <div id="tab_guide_profile">             
+        <div class="account_box">
+        <%= form_for @guide, url: guide_path, html: {id: 'save_guide_form', multipart: true } do |f| %>          
+          <div class="pd_name">Guide profile</div>
+          <% if @guide.completeness_score < 100 %>
+            <div class="warning_box">
+              Your profile is almost ready!
+              Please finish your profile, so you can start guideing!
+            </div>
+          <% else %>
+            <div class="warning_box">
+            <div class="pd_name" style="font-size:16px">Tips & Tricks</div>This information appears on your profile page, search results and other places.<br><br>Using real information in your profile, a personal profile picture and a short bio will help you a lot. You'll seem much more approachable, friendly and attractive!<br><br><%= link_to 'How to set up your profile page', how_to_set_up_your_guide_profile_url %><br><br><%= link_to 'View your profile page', @guide.link %> 
+            </div>
+          <% end %>
+          <%= render 'shared/profile_tabs/guide_basic_profile',    f: f %>             
+          <%= render 'shared/profile_tabs/guide_advanced_profile', f: f %>      
+          <%= render 'shared/profile_tabs/guide_interests',        f: f %>
+		  <div class="save-profile-wrap">
+          <%= f.submit 'Save profile!', class: "sss-button2 blue save-profile" %> 
+		  </div>
+        <% end %>      
+        </div>
+      </div>        
+    </div>
+  </div>        
+</div>

@@ -1,0 +1,79 @@
+<div class="profile">
+	<div class="container">
+		<%= render 'shared/account_menu', tab: 'account' %>	
+		<div class="account_box">
+			<div class="pd_name">Basic profile</div>		
+      <%= form_for @user, :html => { :multipart => true } do |f| %>
+        <div class="lr_row">
+          <div class="lr_left">Picture</div>
+          <div class="lr_right">
+            <% if @user.avatar? %>
+              <%=image_tag @user.avatar(:medium) %>
+            <% end %>
+            <%= f.file_field :avatar %>
+          </div>       
+          <div class="clearfix"></div>                           
+        </div>       
+        <div class="lr_row">
+          <div class="lr_left"><%= f.label :email %></div>
+          <div class="lr_right">
+            <%= f.text_field :email, class: "inputbox", readonly: true %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="lr_row">
+          <div class="lr_left">
+            <%= f.label :first_name %></div>
+          <div class="lr_right">
+            <%= f.text_field :first_name, class: "inputbox" %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="lr_row">
+          <div class="lr_left">
+            <%= f.label :last_name %>
+          </div>
+          <div class="lr_right">
+            <%= f.text_field :last_name, class: "inputbox" %>
+          </div>
+          <div class="clearfix"></div>
+        </div>        
+        <div class="lr_row">
+          <div class="lr_left"><%= f.label :password %></div>
+          <div class="lr_right">
+            <%= f.password_field :password, class: "inputbox" %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="lr_row">
+          <div class="lr_left"><%= f.label :password_confirmation %></div>
+          <div class="lr_right">
+            <%= f.password_field :password_confirmation, class: "inputbox" %>
+          </div>
+          <div class="clearfix"></div>
+        </div>            
+        <div class="lr_row">
+          <div class="lr_left">I am</div>
+          <div class="lr_right">
+            <%= f.select :sex, options_for_select(["Female","Male"], @user.sex) %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="lr_row">
+          <div class="lr_left">Birthday</div>
+          <div class="lr_right">
+            <%= f.date_select :birth_date,
+                               start_year: 1930,
+                               end_year: Time.now.year-14,
+                               default: { year:Time.now.year-25 },
+                               :order => [:day, :month, :year] %>
+            </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="save-profile-wrap">
+        <%= f.submit 'Update' ,class: "sss-button2 blue save-profile" %>
+        </div>
+      <% end %> 
+		</div>
+	</div>
+</div>

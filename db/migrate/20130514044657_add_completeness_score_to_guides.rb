@@ -1,0 +1,5 @@
+class AddCompletenessScoreToGuides < ActiveRecord::Migration
+  def change
+    add_column :guides, :completeness_score, :int, default: 0, null: false
+  end
+end

@@ -1,0 +1,19 @@
+<div class="pd_review_item" id="comment_<%=comment.id%>">
+  <div class="pdr_left">
+    <%= image_tag comment.user.avatar.url(:thumb) %>
+  </div>
+  <div class="pdr_right">
+  	<span class="<%=comment.rating==-1 ? 'negative_review' : 'positive_review'%>">
+      <%= comment.rating==-1 ? 'Negative' : 'Positive' %> review
+    </span> by
+    <span class="comm_user"><%= comment.user.short_name %></span>
+    <span class="pdr_time">- <%=time_ago_in_words comment.created_at %> ago</span>
+    <% if comment.user == current_user %>
+      <span class="modify-link">
+        <%= link_to 'modify', guide_comment_editcomment_template_path(@guide, comment), remote: true %>
+      </span>
+    <% end %>
+    <div class="pdr_desc"><%=comment.body%></div>    
+  </div>
+  <div class="clearfix"></div>
+</div>

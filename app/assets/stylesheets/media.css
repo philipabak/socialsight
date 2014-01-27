@@ -1,0 +1,99 @@
+/* Large desktop */
+@media (min-width: 1200px) {
+}
+
+@media (min-width: 980px) {
+	.container {
+		width: 980px;
+	}
+
+	.fw_left {
+		border-left: none !important;
+		border-right: left !important;
+	}
+
+	.fw_right {
+		float: left !important;
+		border-left: 2px solid white;
+		border-right: none !important;
+	}
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+	.container {
+		width: 740px;
+	}
+	.header {
+		height: 100px !important;
+	}
+
+	body {
+		padding-top: 100px !important;
+	}
+
+	.fs_search_box {
+		float: none !important;
+		display: block !important;
+		margin-left: 128px !important;
+	}
+
+	.fs_joinus_box {
+		float: none !important;
+		display: block !important;
+		margin-top: 30px !important;
+		margin-left: 173px !important;
+	}
+
+	.headerimg {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+		height: 100% !important;
+	}
+	
+	.front_search {
+		height: 100% !important;
+		padding-bottom: 30px;
+	}
+
+	.fw_left {
+		border-left: 2px solid white;
+		border-right: none !important;
+	}
+
+	.fw_right {
+		float: right !important;
+		border-left: none !important;
+		border-right: 2px solid white;
+	}
+
+	.newsletter_text {
+		padding-top: 20px !important;
+		padding-bottom: 0px !important;
+	}
+
+	.front_how_works .container {
+		text-align: center;
+	}
+
+	.fhw_right {
+		float: none !important;
+	}
+
+	.fhw_left .fs_font_style1 {
+		text-align: center !important;
+	}
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+	input, textarea, .uneditable-input {
+		width: 120px !important;
+	}
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {
+}

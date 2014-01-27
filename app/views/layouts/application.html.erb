@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Social Sightseeing: Find your perfect local guide" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Discover the world through the eyes of a local! We help you find your perfect local guide." %>">
+    <meta name="keywords" content="<%= content_for?(:keywords) ? yield(:keywords) : "social, sightseeing, local, guides, guiding, tourguide, guide" %>">
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=en" type="text/javascript"></script>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <% if Rails.env == 'production' %>
+      <!-- ClickTale Top part -->
+      <script type="text/javascript">
+        var WRInitTime=(new Date()).getTime();
+      </script>
+      <!-- ClickTale end of Top part -->
+    <% end %>
+    <div class="row">
+      <nav class="navbar navbar-inverse navbar-fixed-top header">
+        <div class="row">
+          <div class="container_full">
+            <%= render 'layouts/navigation' %>
+            <!-- <div class="clearfix"></div> -->
+          </div>
+      </nav>
+    </div>
+    <div class="<%= controller_name %> <%= action_name %>">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </div>
+    <div class="footer">
+      <div class="container">
+    
+		<div class="footer_items">
+			<ul class="footer_menu">
+				<li><%= link_to 'How it works', how_it_works_path %></li>
+				<li><a href="http://blog.socialsightseeing.com" target="_blank">Blog</a></li>
+				<li><a href="http://support.socialsightseeing.com">Help</a></li>        
+				<li>
+          <a class="showjoinus" href="<%= current_user.present? ? edit_guide_url : "#"%>">
+            Join as a guide
+          </a>
+        </li>        				
+			</ul>
+
+			<ul class="footer_menu2">
+				<li>&copy; 2013 Social Sightseeing</li>
+				<li><%= link_to 'Terms of Service', terms_of_use_path %></li>
+				<li><%= link_to 'Privacy Policy', privacy_policy_path %></li>
+			</ul>
+		</div>
+		<div class="footer_items">
+			<ul class="social_pages">
+				<li class="icon_facebook"><a href="https://www.facebook.com/socialsightseeing" target="_blank"></a></li>
+				<li class="icon_twitter"><a href="https://twitter.com/Soc_Sightseeing" target="_blank"></a></li>
+				<li class="icon_pic"><a href="http://pinterest.com/socialsights" target="_blank"></a></li>
+				<!--<li class="icon_inst"><a href=""></a></li>-->
+				<li class="icon_googleplus"><a href="http://gplus.to/socialsightseeing" target="_blank"></a></li>				
+			</ul>		  
+		</div>
+		<div class="footer_items float_right">
+			<div class="newsletter_text">Stay up to date</div>
+			<div class="nl_wrap">
+      <%= form_tag newsletter_signup_path, method: :post do%>
+        <div class="nl_input"><%= text_field_tag :email %></div>
+        <div class="nl_submit"><%= submit_tag 'Submit', class: "sss-button4" %></div> 				
+				<div class="clearfix"></div>
+      <% end %>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+      </div>    
+    </div>
+	  <% if Rails.env == 'production' %>
+      <%= render 'layouts/analytics/clicktale_bottom' %>
+      <%= render 'layouts/analytics/ga' %>
+      <!-- Google Code for Remarketing tag Start-->
+      <script type="text/javascript">
+        var google_conversion_id = 988559633;
+        var google_conversion_label = "WKKbCI-E0AUQkfKw1wM";
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+      </script>
+      <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+      <noscript>
+        <div style="display:inline;">
+          <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/988559633/?value=0&amp;label=WKKbCI-E0AUQkfKw1wM&amp;guid=ON&amp;script=0"/>
+        </div>
+      </noscript>
+      <!-- Google Code for Remarketing tag End-->
+    <%end%>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<div class="messages">
+  <div class="container">
+    <%= render 'shared/account_menu', tab: 'messages' %>
+    <div class="am_tabs_contents">
+      <div class="white_box_shadow">
+        <div id="tab_message">
+          <table class="message-form-table">
+            <col width="180px"/>
+            <col width="400px"/>
+            <%= form_for @message_thread do |f| %>
+                <%= f.fields_for :messages do |builder| %>
+                    <%= render "form", :f => builder %>
+                <% end %>
+
+                <tr>
+                  <td></td>
+                  <td>
+                    <%= f.submit "Send",:class=> "sss-button blue" %>
+                  </td>
+                </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

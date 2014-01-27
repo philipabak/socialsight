@@ -1,0 +1,38 @@
+<% unread = Message.unread_by_user_for_thread(message_thread, current_user) %>
+<tr class="message-threads-row<%= unread.any? ? "" : " mtr-unread" %>">
+  <td class="message-threads-row-selector-cell sss-chb">
+    <input type="checkbox" thread_id="<%= message_thread.id %>" class="message-threads-row-selector">
+  </td>
+  <td class="message-threads-avatar-cell">
+	<%= link_to message_thread do %>
+		<%= image_tag message_thread.opposite_member(current_user).avatar.url(:thumb) %></td>
+	<% end %>
+  <td class="message-threads-partner-cell" style="<%= unread.any? ? "font-weight:bold;" : "" %>">
+    <div>
+        <%= link_to "#{message_thread.opposite_member(current_user).short_name}", message_thread %>		
+    </div>
+    <div class="message-threads-time-stamp">
+		<%= link_to message_thread do %>
+			<%= time_ago_in_words(message_thread.messages.last.created_at) %>
+		<% end %>
+	</div>
+  </td>
+  <td class="message-threads-count">
+  <div class="message-thread-count-icon<%= unread.any? ? " mtc-unread" : "" %>"><%= message_thread.messages.count %></div>
+  </td>
+  <td>
+    <div class="message-threads-desc" style="<%= unread.any? ? "font-weight:bold;" : "" %>">
+	  <%= link_to message_thread do %>
+      <% if message_thread.messages.last.message_text.length == 0 && message_thread.messages.last.booking %>
+          <% message = message_thread.messages.where("message_text IS NOT NULL AND message_text != ''").last %>
+          <%= message.message_text.length < 175 ? message.message_text : message.message_text.slice(0, 175)+"..." %>
+      <% else %>
+          <%= message_thread.messages.last.message_text.length < 175 ? message_thread.messages.last.message_text : message_thread.messages.last.message_text.slice(0, 175)+"..." %>
+      <% end %>
+      <% unless message_thread.is_open? %>
+        <strong>BOOKING ID: <%= message_thread.completed_booking.id %></strong>
+      <% end %>
+    <% end %>
+    </div>
+  </td>
+</tr>

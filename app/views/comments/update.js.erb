@@ -1,0 +1,4 @@
+$('#comment_<%=@comment.id%>').html(
+  "<%= j render partial: 'guides/comment', object: @comment %>"
+)
+$('#new_comment').remove();

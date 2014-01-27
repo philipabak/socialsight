@@ -1,0 +1,76 @@
+<div class="guide_card">
+  <div class="gc_image sss_tooltip_wrap2">
+  <% if guide.is_professional %>
+    <div class="gc_pro"></div>
+  <% end %>
+  <%=link_to image_tag(guide.user.avatar.url(:medium)), guide.link %>
+
+	<div class="gc_addtofavorite_DISABLED" style="display:none"><span style="display:none">Add to favorites</span></div>
+	
+    <div class="sss_tooltip2 width_380">
+      <div class="ssstt_inner">
+        <div class="tooltip_arrow"></div>
+        <strong>Living in:</strong>
+          <%= city.formatted_with_country %>
+        <br/><br/>
+
+        <strong>Introduction:</strong>
+          <%= guide.short_introduction %>
+        <br/><br/>
+        <strong>Languages:</strong>
+          <%=guide.spoken_languages_with_levels%> 
+        <br/><br/>
+        <strong>How we can travel:</strong>
+          <%=guide.transport_methods_with_commas%> 
+        <br/><br/>
+        <div class="tt_fleft">
+          <strong>I am intrested at</strong>
+          <ul>
+            <% guide.interests.each do |i| %>
+              <li><%= i.name %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="clearfix"></div>
+      </div> 
+    </div> 
+</div>
+
+<div class="gc2_top">
+	<div class="gc2_name"><%= guide.user.short_name %> <span>(<%= guide.user.age %>)</span></div>
+	<div class="clearfix"></div>		 
+	
+	<div class="gc2_facebook_veri_wrap">
+	<% if guide.user.is_fb_verified? %>	
+	  <div class="gc2_faceveri tooltip" title="Facebook verified">verified</div>	  
+    <% end %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="gc_icons">
+	<% guide.rates.each do |r| %>
+	  <%= render partial:"service_icon",
+				 locals: {rate:r} %>
+	<% end %> 
+  <% if guide.has_review? %>
+    <div class="gc2_review"><%= "%.0f%"%guide.positive_review_proportion %></div>
+  <% end %>
+	<div class="clearfix"></div>
+</div>
+
+<div class="gc_offer">
+  <strong>Offer:  </strong>
+  <%if guide.rate == 0 %>
+    Free
+  <%else%>
+    <%= number_to_currency guide.rate, precision:0 %> <span class="list_hour">/ hour</span>
+  <%end%>
+</div>
+<div class="gc2_review_num">
+  <%= guide.has_review? ?
+    link_to("#{guide.review_count} reviews", "#{guide.slug}#reviews"):
+    "No reviews yet." %>  
+</div>  
+<div class="clearfix"></div>
+</div>

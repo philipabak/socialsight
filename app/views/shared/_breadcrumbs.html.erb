@@ -1,0 +1,8 @@
+<div class="pathway">
+  <%= link_to 'Home', root_path %>
+  <% breadcrumbs.each do |breadcrumb| %>
+    <div class="pw_separator"></div>
+    <%= link_to breadcrumb[:name], breadcrumb[:link] %>  
+  <% end %>
+  <div class="clearfix"></div>
+</div>  

@@ -1,0 +1,145 @@
+// Place all the styles related to the MessageThreads controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.message-threads-header-options {
+  font-size: 24px;
+  padding: 20px;
+}
+
+.message-threads-table {
+  width: 100%;
+  margin: 20px 0;
+}
+.message-threads-row td {
+  border-bottom: 1px solid #EEE;
+  padding: 10px 0;
+}
+.mtr-unread td {
+  background: #f8f8f8;
+}
+
+.message-threads-avatar-cell {
+  width: 70px;
+}
+
+.message-threads-avatar-cell img {
+  max-width: 50px;
+}
+
+.message-threads-row .message-threads-row-selector-cell {
+  width: 40px;
+  padding: 10px 0 10px 10px;
+}
+
+.message-threads-row-selector-cell input {
+  width: 30px;
+}
+
+
+.message-threads-partner-cell {
+  width: 120px;
+  font-size: 16px;
+}
+
+.message-form-table {
+  width: 100%;
+  margin: 20px;
+}
+
+.message-threads-time-stamp {
+  font-size: 11px;  
+}
+
+.message-threads-desc a,
+.message-threads-desc a:visited,
+.message-threads-desc a:hover,
+.message-threads-desc a:active {
+  text-decoration: none;
+  color:#333333;
+}
+.message-threads-time-stamp a,
+.message-threads-time-stamp a:visited,
+.message-threads-time-stamp a:hover,
+.message-threads-time-stamp a:active {
+  text-decoration: none;
+  color:#8c8c8c;
+}
+
+.message-threads-count {
+	width: 60px;
+	text-align: center;
+}
+.message-thread-count-icon {
+	width: 26px;
+	height: 25px;
+	background-image: url('icon_message2.png');
+	color: #fff;
+	font-size: 12px;
+	font-weight: 700;
+}
+.mtc-unread {
+	background-image: url('icon_message.png');
+}
+
+.message-form-table td {
+  vertical-align: top;
+}
+
+.message-form-table .sss-button {
+  width: 100px;
+  padding: 5px 0 !important;
+}
+
+
+.message-threads-more-option-container {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
+
+.message-threads-more-option-container #message_thread_more_options {
+  display: none;
+  background-color: white;
+  border: 1px solid #EEE;
+  border-top: 1px dotted #eee;
+  width: 125px;
+  top: 30px;
+  position: absolute;
+  border-radius: 0 0 5px 5px;
+}
+
+.message-threads-more-option-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.message-threads-header-options-links {
+  display: inline-block;
+  margin-left: 40px;
+}
+
+.message-threads-header-options-links a {
+  margin-right: 15px;
+}
+
+#message_threads_more_option {
+  background: url('icon_arrow5.png') 100px center no-repeat;
+  vertical-align: middle;
+  display: inline-block;
+  font-size: 16px;
+  width: 115px;
+  border: 1px solid #EEE;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#message_threads_more_option.open {
+  background: url('icon_arrow4.png') 100px center no-repeat;
+  border-bottom: 0;
+  border-radius: 5px 5px 0 0;
+}
+.message-threads-select-all{
+  display: inline-block;
+}

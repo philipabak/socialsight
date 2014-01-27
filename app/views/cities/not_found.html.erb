@@ -1,0 +1,46 @@
+<div class="not_found">
+	<div class="container">
+		
+			<div class="nf_sorry">
+				<div class="nfs1">Hey, we are terribly sorry, but we don't have any guides in <%=@not_found_location %> - yet!</div>
+				<div class="nfs2">We have just started, so please come back in a few weeks, and you'll find many guides for sure! Why don't you 
+				<%=link_to "join our community", current_user.present? ? edit_guide_url : '#',
+					class: "showjoinus", data: { nflocation: @not_found_location}%>
+				now and we notify you ASAP!</div>
+			</div>
+			<div class="nf_comeback">
+				<div class="nfs1" style="text-align:center">Be a guide in your city.</div>
+				<div class="nfs2" style="text-align:center">Show traveler friends why you love your city!</div>
+				<div class="showjoinus sss-button2 blue" style="height:55px; font-weight:600;"
+						 data-nflocation="<%=@not_found_location%>"
+						 <%= current_user.present? ? "data-redirect=#{edit_guide_url}" : ""%>>
+					Join as a guide
+				</div>
+			</div>
+			
+			<div class="clearfix"></div>				
+			<div class="fh_font_style5">Meanwhile, check out some other cities:</div>
+				
+			<div class="nf_firstplace">
+			
+				<% @cities.each_with_index do |city, index| %>
+					<div class="city_card">
+						<%= image_tag @guides[index].try(:user).try(:avatar).try(:url, :thumb) %>
+						<div class="city_card_info">
+							<%= link_to "#{city.slug}" do %>
+							  <%="#{city.name},"%><span><%=city.country_name%></span>
+							<% end %>
+						</div>
+							
+												
+						<div class="city_card_guides">
+							<%= city.guides_count %> guides <br/>
+							distance: <%= "#{city.distance.to_i} km" %>							
+						</div>
+					</div>
+				<% end %>		
+				<div class="clearfix"></div>
+			</div><!--nf_firstplace-->			
+		
+	</div>		
+</div>		

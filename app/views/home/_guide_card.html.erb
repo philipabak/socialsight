@@ -1,0 +1,12 @@
+<div class="guide_card2">
+  <div class="gc2_image">
+    <%=link_to image_tag(guide_card.user.avatar.url(:medium)),"#{guide_card.slug}"%>
+  </div>
+  <div class="gc2_name"><%=guide_card.user.short_name%></div>
+  <div class="gc2_review"><%="%.0f%"%guide_card.positive_review_proportion%></div>
+  <div class="clearfix"></div>
+  <div class="gc2_place">
+    <%city = guide_card.user.cities.first%>
+    <%=link_to city.formatted_with_country, "/#{city.slug}"%>
+  </div>   
+</div>

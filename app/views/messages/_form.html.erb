@@ -1,0 +1,27 @@
+<% if @message_thread.receiver.nil? || params[:receiver_id] %>
+    <tr>
+      <td class="message-label">Receiver</td>
+      <td>
+        <%= hidden_field_tag '[message_thread][messages_attributes][0][receiver_id]',
+                              @message.receiver_id %>
+        <%= @receiver_name %>
+      </td>
+    </tr>
+<% end %>
+<tr>
+  <td>
+    <div class="message-label">Post message</div>
+  </td>
+  <td>
+    <%= f.hidden_field :sender_id, :value => current_user.id %>
+    <%= f.text_area :message_text, :class => "message-text-area textarea", :rows => 5 %></td>
+</tr>
+<tr>
+  <td>
+    <div class="message-label">Attachment</div>
+  </td>
+  <td>
+    <%= f.file_field :attachment %>
+  </td>
+</tr>
+<br/>

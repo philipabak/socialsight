@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="col-md-6 col-sm-12">
+    <div class="logo">
+      <div class="beta-test"><span class="jewelCount"></span></div>
+
+      <a href="<%= root_path %>"></a>
+    </div>
+
+    <div class="global_city_search">
+      <%= text_field_tag 'global_city_search' %>
+    </div>
+  </div>
+
+<div class="header_menu col-md-6 col-sm-12">
+  <% if current_user %>
+    <%= link_to 'How it works', how_it_works_path, class: "acc_href"  %>
+    <a class="acc_href" href="http://blog.socialsightseeing.com" target="_blank">Blog</a>
+    <a class="acc_href" href="http://support.socialsightseeing.com" target="_blank">Help</a>
+    <div class="user_mail">
+  		<a href="<%= message_threads_path %>">
+  		  <% unread = MessageThread.unread_by_user(current_user) %>
+  		  <%= unread>0 ? raw("<span class='jewelCount'><span>#{unread}</span></span>") : "" %>
+  		</a>
+    </div>
+
+      <div class="user_photo">
+        <%= image_tag current_user.avatar.url(:thumb) %>
+      </div>
+      <div class="user_name">
+        <span><%= current_user.short_name %></span>
+        <ul>
+          <% if current_user.is_admin? %>
+            <li>
+              <%= link_to 'Admin', admin_root_path %>
+            </li>
+          <% end %>
+          <li><%= link_to 'Account Settings', edit_user_path(current_user)%></li>
+          <li><%= link_to 'Guide profile',    edit_guide_path %></li>
+          <li><%= link_to 'Messages',         message_threads_path%></li>
+          <li><%= link_to 'Bookings',         bookings_path%></li>
+          <li><%= link_to 'Log Out', logout_path, id: "logout" %></li>
+        </ul>
+      </div>
+  <% else %>
+      <ul>
+        <li><%= link_to 'How it works', how_it_works_path %></li>
+        <li><a href="http://blog.socialsightseeing.com" target="_blank">Blog</a></li>
+        <li><a href="http://support.socialsightseeing.com" target="_blank">Help</a></li>
+        <li><a href="#" class="showjoinus">Join as a guide</a></li>
+        <li><a id="login-trigger" href="#">Login</a>
+
+          <div class="loginreg_box" style="display: none;">
+            <ul id="loginreg_tabs">
+              <li class="tab_joinus">Join us</li>
+              <li class="tab_login active_tab">Login</li>
+            </ul>
+            <div class="clearfix"></div>
+            <div class="loginreg_tabs_contents">
+              <div id="tab_joinus">
+                <%= render 'home/joinus_tab' %>
+              </div>
+              <div id="tab_login">
+                <%= render 'home/login_tab' %>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+  <% end %>
+
+  <div class="clearfix"></div>
+</div>
+</div>

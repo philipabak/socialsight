@@ -1,0 +1,81 @@
+// Place all the styles related to the Messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.messages-table {
+  width: 100%;
+  margin: 20px 0;  
+}
+.messages-table td {
+  padding: 20px 0;
+}
+
+.messages-table td.messages-avatar-cell {
+  width: 70px;
+  padding: 20px 0px 20px 20px;
+}
+
+.messages-avatar-cell img {
+  max-width: 50px;
+}
+.messages-partner-cell {
+  width: 120px;
+  font-size: 16px;
+}
+
+.message-row {
+  display: block;
+  border-top: 1px solid #EEE;
+}
+
+.fake-text-area {
+  border: none;
+  box-shadow: none;
+  resize: none;
+  padding: 0;
+  margin: 0;
+  height: initial;
+  width: 100%;
+}
+
+.messages-offer-price {
+  font-weight: bold;
+}
+
+.messages-text-cell {
+  width: 500px;
+}
+
+.message-text-area {
+  width: 400px;
+  height: 60px;
+  width: 707px;
+  height: 100px;  
+  border: 1px solid #bfbfbf;  
+}
+
+.messages-rejected-booking {
+  font-size: 12px;
+  color: #8b0000;
+  font-weight: bold;
+}
+
+.messages-accepted-booking {
+  font-size: 12px;
+  font-weight: bold;
+  color: #32cd32;
+}
+.hidden{
+  visibility: hidden;
+}
+.messages-time-stamp{
+  font-size: 11px;
+}
+.message-label{
+  font-size: 16px;
+  font-weight: 700;
+}
+.message-form-table .sss-button2 {
+	height: 54px;
+}

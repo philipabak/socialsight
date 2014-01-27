@@ -1,0 +1,11 @@
+<div id="reviews" class="white_box">
+  <div class="wbs_head">
+    Reviews
+    <div class="review_head_right">
+      <%=@guide.positive_review_proportion.round(0)%>% positive
+    </div>      
+  </div>
+  <div class="wbs_content">         
+    <%= render partial:'guides/comment', collection: @guide.comment_threads.order('created_at DESC')%>
+  </div>
+</div>

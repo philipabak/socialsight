@@ -1,0 +1,9 @@
+<div class="account_menu">
+  <ul id="am_tabs">
+    <%= content_tag(:li, class: tab=='account'  ? 'active_tab' : '') { link_to('Account', edit_user_path) } %>
+    <%= content_tag(:li, class: tab=='guide'    ? 'active_tab' : '') { link_to('Guide profile', edit_guide_path) } %>
+    <%= content_tag(:li, class: tab=='messages' ? 'active_tab' : '') { link_to('Messages', message_threads_path) } %>
+    <%= content_tag(:li, class: tab=='bookings' ? 'active_tab' : '') { link_to('Bookings', bookings_path) } %>
+  </ul>
+  <div class="clearfix"></div>
+</div>

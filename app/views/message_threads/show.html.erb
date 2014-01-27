@@ -1,0 +1,66 @@
+<div class="messages">
+  <div class="container">
+    <%= render 'shared/account_menu', tab: 'messages' %>
+    <%= render partial: 'shared/breadcrumbs', 
+               locals: {breadcrumbs: @breadcrumbs} %>
+    <div class="am_tabs_contents">
+      <div class="">
+        <div id="tab_messages">
+          <%= render :partial => 'header_options' %>
+          <%= form_for [@message_thread, @message] do |f| %>
+		  <table class="message-form-table">            
+                <%= render "form", :f => f %>
+                <tr>
+                  <td width="180"></td>
+                  <td width="400">
+                    <%= f.submit "Send message", :class => "sss-button2 blue" %>
+                  </td>
+                </tr>            
+          </table>
+		  <% end %>
+          <table class="messages-table">
+            <% @message_thread.messages.reject { |x| x.id.nil? }.reverse_each do |m| %>
+                <tr class="message-row">
+                  <td class="messages-avatar-cell">
+                    <%= image_tag m.sender.avatar.url(:thumb) %>
+                  </td>
+                  <td class="messages-partner-cell">
+                    <div>
+                      <% if m.sender.is_guide? %>
+                          <%= link_to m.sender.short_name, "/#{m.sender.is_guide? ? m.sender.guide.slug : ""}" %>
+                      <% else %>
+                          <%= m.sender.short_name %>
+                      <% end %>
+                    </div>
+                    <div class="messages-time-stamp"><%= time_ago_in_words m.created_at %></div>
+                  </td>
+                  <td class="messages-text-cell">
+                    <%= simple_format(m.message_text) %>
+                    <% if m.booking %>
+                        <div class="messages-offer-price">
+                          Offer: <%= m.booking.price %> USD
+                        </div>
+                    <% end %>
+                    <% if m.modified_booking %>
+                        <div class="messages-accepted-booking">
+                          <% if m.modified_booking.user == current_user %>
+                              You have accepted <%= m.modified_booking.guide.user.short_name %>'s
+                              offer of <%= m.modified_booking.price %> USD
+                          <% else %>
+                              <%= m.modified_booking.user.short_name %> has accepted
+                              offer of <%= m.modified_booking.price %> USD
+                          <% end %>
+                        </div>
+                    <% end %>
+                    <% if m.has_attachment? %>
+                        <%= link_to 'Download attachment', message_attachment_url(:message_thread_id => @message_thread.id, :id => m.id) %>
+                    <% end %>
+                  </td>
+                </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<%= form_tag password_resets_path, :method => :post do %>
+
+
+
+
+<div class="password-reset">
+
+  <div class="container">
+
+  <div class="pw-content">
+    
+    <div class="pd_name"> Reset your password</div>
+    <br/>
+    Did you forget your password? <br/>We can send you a new one, just enter your email address below. 
+    <br/><br/>
+    
+    <div class="password-reset-field">
+    <%= text_field_tag :email, params[:email], placeholder:'Email', class:'password-reset-field'%>
+    <%= submit_tag "Reset Password", class:'password-reset-submit blue' %>
+    </div>
+
+  </div>
+  <div class="clearfix"></div>
+  </div>
+</div>
+
+<% end %>
