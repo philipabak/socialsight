@@ -317,8 +317,6 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.8)
-    sqlite3 (1.3.8-x86-mingw32)
     thin (1.5.0)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -389,7 +387,6 @@ DEPENDENCIES
   shelly-dependencies
   sidekiq (>= 2.7.0)
   sidekiq_mailer
-  sqlite3
   thin (>= 1.5.0)
   uglifier (>= 1.0.3)
   unicorn

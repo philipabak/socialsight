@@ -12,8 +12,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'sqlite3'
-
 gem 'newrelic_rpm'
 gem 'gibbon', "~> 0.4.6"
 gem 'rack-rewrite'
