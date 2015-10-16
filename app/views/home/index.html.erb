@@ -10,13 +10,13 @@
 			</div>
 			
 			<div class="fs_search_box col-md-7 col-sm-12">
-				<div class="fs_font_style1">Find your perfect local guide.</div>
+				<div class="fs_font_style1">Find your perfect    local guide.</div>
 				<div class="fs_font_style2">Discover the world through the eyes of a local.</div>
 				<div class="fs_input_wrap">
 					<%= form_tag(city_search_path, :method => "get") do %>
 					<%= text_field_tag :city_search, nil, class: 'search_input',
 										placeholder: 'Where are you going?' %>   
-					<input type="submit" class="search_button blue" value="Search" name="Search" />
+					<input type="submit" class="search_button blue" value="Search" name="Search" id="fs_search_button" />
 					<% end %>      
 					<div class="clearfix"></div>
 				</div>
@@ -80,8 +80,8 @@
 		</div>
 
 		<div class="fhw_right">
-			<a href="http://fast.wistia.net/embed/iframe/nr581xjjr9?autoPlay=true&controlsVisibleOnLoad=true&popover=true&version=v1&videoHeight=450&videoWidth=800&volumeControl=true" class="player wistia-popover[height=450,width=800]">
-			<img src="assets/video.png" alt="How Social Sightseeing works" />
+			<a href="http://fast.wistia.net/embed/iframe/nr581xjjr9?autoPlay=true&controlsVisibleOnLoad=true&popover=true&version=v1&videoHeight=450&videoWidth=800&volumeControl=true" class="player wistia-popover[height=450,width=800]" id="howitworks_video">
+				<img src="assets/video.png" alt="How Social Sightseeing works" />
 			</a>
 			<script charset="ISO-8859-1" src="http://fast.wistia.com/static/popover-v1.js"></script>	
 		</div>

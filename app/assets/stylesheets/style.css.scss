@@ -235,7 +235,7 @@ input.error {
 }
 
 .header_menu {
-	/*float: right;*/
+	float: right;
 	display: inline;
 	padding: 0px 0 0 0;
 }
@@ -3325,3 +3325,7 @@ li.tab_login {
 */
 .anythingFader .wrapper ul ul          { position: static; margin: 0; background: none; overflow: visible; width: auto; border: 0; }
 .anythingFader .wrapper ul ul li       { float: none; height: auto; width: auto; background: none; }
+
+.header_menu .navbar-collapse ul li {
+	padding: 0px;
+}

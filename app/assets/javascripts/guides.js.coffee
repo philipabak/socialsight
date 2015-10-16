@@ -24,7 +24,7 @@ $ ->
   if $('.pagination').length
     $(window).scroll ->
       url = $('.pagination .next>a').attr('href')
-      if url && close_to_bottom(400)
+      if url && close_to_bottom(500)
         #Prevent from loading occuring multiple times
         $('.paginator').text("Fetching more guides...")
         action       = search_form.attr('action')

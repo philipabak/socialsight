@@ -17,6 +17,10 @@
 		border-left: 2px solid white;
 		border-right: none !important;
 	}
+
+	.message-text-area {
+		width: 516px !important;
+	}
 }
  
 /* Portrait tablet to landscape and desktop */
@@ -86,12 +90,39 @@
 	.fhw_left .fs_font_style1 {
 		text-align: center !important;
 	}
+
+	.hiw-content {
+		width: 638px !important;
+	}
+
+	.hiw-navigation {
+		float: left !important;
+		margin-top: 40px !important;
+		width: 315px !important;
+	}
+
+	.htsu-navigation {
+		float: left !important;
+	}
+
+	.account_menu {
+		margin-bottom: 0px !important;
+	}
+
+	.warning_box {
+		left: 400px !important;
+	}
+
+	.header_menu {
+		margin-right: 110px;
+	}
 }
  
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
 	.container {
 		padding: 0px !important;
+		width: 450px !important;
 	}
 
 	#global_city_search {
@@ -113,6 +144,7 @@
 	.fs_search_box {
 		float: none !important;
 		display: block !important;
+		width: 450px !important;
 	}
 
 	.fs_joinus_box {
@@ -148,10 +180,451 @@
 	}
 
 	.fhw_left {
-		widows: 100%;
+		width: 100% !important;
+	}
+
+	.header_menu {
+		display: inline-block !important;
+	}
+
+	.footer_items {
+		float: none !important;
+		text-align: center;
+	}
+
+	.nl_wrap {
+		float: left;
+		margin-left: 109px;
+	}
+
+	.newsletter_text {
+		padding-top: 20px !important;
+		padding-bottom: 0px !important;
+	}
+
+	.hiw-content {
+		width: 350px !important;
+	}
+
+	.hiw-navigation {
+		width: 370px !important;
+		margin-top: 20px !important;
+	}
+
+	.htsu-navigation {
+		margin-left: 120px !important;
+		margin-top: 20px !important;
+	}
+
+	.content-navigation {
+		margin-left: -20px;
+	}
+
+	.htsu-content {
+		width: 350px !important;
+	}
+
+	.save-profile-wrap {
+		padding-left: 130px !important;
+	}
+
+	.guides {
+		padding-left: 0px !important;
+	}
+
+	.ar_right textarea {
+		width: 417px !important;
+	}
+
+	.left_hints {
+		width: 400px !important;
+	}
+
+	.ar_right {
+		width: 440px !important;
+	}
+
+	.arr_ser_right {
+		width: 400px !important;
+	}
+
+	.warning_box {
+		width: 150px !important;
+		left: 234px !important;
+	}
+
+	.fhw_right #howitworks_vide {
+		
+	}
+
+	.fw_left {
+		width: 420px !important;
+		background-position: 10px 70px !important;
+	}
+
+	.fw_left ul {
+		margin-left: 120px !important;
+	}
+
+	.fw_right {
+		width: 420px !important;
+		background-position: 10px 70px !important;
+	}
+
+	.fw_right ul {
+		margin-left: 120px !important;
+	}
+
+	input[type="submit"].search_button {
+		right: 42px !important;
+	}
+
+	.account_menu ul li a, .account_menu ul li a:visited, .account_menu ul li a:active {
+		padding-right: 17px !important;
+		padding-left: 17px !important;
+	}
+
+	.collapse {
+		display: block !important;
+	}
+
+	#toggle_button {
+		display: none !important;
+		margin-left: 10px;
+	}
+
+	.acc_href {
+		margin-top: 7px !important;
+	}
+
+	.message-text-area {
+		width: 292px !important;
+	}
+
+	.pdr_right {
+		width: 276px !important;
+	}
+
+	.profile_left {
+		width: 470px !important;
+	}
+
+	.fixed_head .guides_head {
+		position: initial !important;
 	}
 }
  
 /* Landscape phones and down */
-@media (max-width: 480px) {
+@media (max-width: 479px) {
+	.container_full {
+		padding: 0px 27px !important;
+	}
+
+	.container {
+		width: 303px !important;
+	}
+
+	.logo {
+		background-size: contain !important;
+		width: 131px !important;
+		margin-top: 5px !important;
+	}
+
+	.logo a {
+		width: auto !important;
+	}
+
+	.global_city_search {
+		margin-left: -65px !important;
+	}
+
+	.header_menu {
+		margin-top: -2px;
+		width: 300px !important;
+	}
+
+	.header_menu li {
+		padding-left: 10px !important;
+	}
+
+	.collapse {
+		display: none !important;
+	}
+
+	#toggle_button {
+		display: block !important;
+	}
+
+	#navbar-collapse {
+		position: absolute;
+		margin-top: 40px;
+		margin-left: 2px;
+		background-color: white;
+	}
+
+	#toggle_button {
+		margin-left: 10px !important;
+	}
+
+	.fs_search_box {
+		width: 305px !important;
+		height: 154px !important;
+		background-size: contain !important;
+	}
+
+	.fs_font_style1 {
+		line-height: normal;
+		width: 300px !important;
+		padding-top: 10px !important;
+		font-size: 16px !important;
+	}
+
+	.fs_font_style2 {
+		line-height: normal;
+		width: 300px !important;
+		padding-top: 10px !important;
+	}
+
+	#city_search {
+    margin-left: -23px;
+    margin-top: -6px;
+    height: 34px;
+    background-position-y: 9px;
+    width: 181px;
+	}
+
+	#fs_search_button {
+		height: 30px;
+		line-height: normal;
+		margin-top: 37px;
+	}
+
+	.fs_joinus_box {
+		width: 300px !important;
+		margin-left: 2px !important;
+		height: 173px !important;
+	}
+
+	.fw_left {
+		background-position: 157px 70px !important;
+		padding: 0px !important;
+		width: 310px !important;
+	}
+
+	.fw_left ul {
+		margin-left: 15px !important;
+	}
+
+	.front_why ul li {
+		font-size: 13px !important;
+	}
+
+	.front_why .fs_font_style1 {
+		padding-bottom: 12px !important;
+	}
+
+	.fw_right {
+		padding: 0px !important;
+		border: none !important;
+		background-position: -12px 46px !important;
+		width: 310px !important;
+	}
+
+	.footer_menu {
+		padding-left: 3px !important;
+	}
+
+	.footer_menu li {
+		padding-right: 10px !important;
+		padding-top: 0px !important;
+	}
+
+	.footer_menu2 li {
+		padding: 0px !important;
+	}
+
+	.footer_menu2 {
+		padding-left: 0px !important;
+	}
+
+	.social_pages {
+		margin-top: 12px !important;
+	}
+
+	.nl_wrap {
+		float: right !important;
+		margin-left: 0px !important;
+	}
+
+	.alert {
+		left: 0px !important;
+		padding: 0px !important;
+		width: 288px !important;
+		margin-left: 18px !important;
+	}
+
+	.hiw-content {
+		padding: 10px !important;
+		width: 281px !important;
+	}
+
+	.pd_name {
+		font-size: 20px !important;
+		line-height: normal;
+	}
+
+	.hiw-content-text {
+		width: 282px !important;
+	}
+
+	.hiw-navigation {
+		width: 254px !important;
+	}
+
+	.htsu-navigation {
+		margin-left: 57px !important;
+	}
+
+	.content-navigation {
+		margin-left: -36px !important;
+	}
+
+	.htsu-content {
+		width: 260px !important;
+		padding: 20px !important;
+	}
+
+	.account_menu ul li a, .account_menu ul li a:visited, .account_menu ul li a:active {
+		padding-right: 7px !important;
+		padding-left: 7px !important;
+	}
+
+	.account_menu {
+		width: 318px;
+	}
+
+	.account_menu ul li {
+		font-size: 14px !important;
+	}
+
+	.lr_right input {
+		width: 258px !important;
+	}
+
+	.save-profile-wrap {
+		padding-left: 34px !important;
+	}
+
+	.warning_box {
+		display: none;
+	}
+
+	.left_hints {
+		width: 297px !important;
+	}
+
+	.ar_right textarea {
+		width: 258px !important;
+	}
+
+	#short_introduction_remaining_length {
+		float: none !important;
+	}
+
+	.ar_right {
+		width: 293px !important;
+	}
+
+	.arr_ser_right {
+		width: 258px !important;
+	}
+
+	.message-text-area {
+		width: 176px !important;
+	}
+
+	.nf_sorry {
+		width: 283px !important;
+		margin: 0px !important;
+		background-position: 103px 17px !important;
+		padding: 103px 10px 10px 10px !important;
+	}
+
+	.nf_comeback {
+		width: 242px !important;
+	}
+
+	.city_card {
+		width: 298px !important;
+	}
+
+	.loginreg_box {
+		width: 300px !important;
+	}
+
+	#loginreg_tabs li {
+		width: 140px !important;
+	}
+
+	.signupface, .signupface2 {
+		width: 240px !important;
+		background-size: contain !important;
+	}
+
+	.lr_or span {
+		left: 105px !important;
+	}
+
+	#loginform .lr_right input {
+		width: 236px !important;
+	}
+
+	#new_user .lr_right input {
+		width: 236px !important;
+	}
+
+	.lr_registration {
+		margin: 5px 0px 0px 50px !important;
+	}
+
+	.loginreg_box .lr_left {
+		width: 120px !important;
+	}
+
+	input, textarea, .uneditable-input {
+		width: 187px !important;
+	}
+
+	.bookings-table td {
+		padding: 0px !important;
+	}
+
+	.nl_submit input, textarea, .uneditable-input {
+		width: auto !important;
+	}
+
+	.profile_left {
+		width: 310px !important;
+	}
+
+	.pd_image img {
+		width: 270px !important;
+	}
+
+	.pd_desc {
+		width: 270px !important;
+	}
+
+	.old-search > div {
+		width: 220px !important;
+	}
+
+	.fixed_head .guides_head {
+		width: 281px !important;
+		position: initial !important;
+	}
+
+	.guides_head {
+		width: 267px !important;
+	}
 }

@@ -1,8 +1,0 @@
-# link nested directory public/system to persistent disk/system
-mkdir -p disk/system
-ln -s ../disk/system public/system
-
-ln -s disk/uploads uploads
-# link nested directory storage to persistent disk/storage
-mkdir -p disk/storage
-ln -s disk/storage storage

@@ -3,8 +3,6 @@ jQuery(window).load(function() {
 });
 
 
-
-
 function originalCode() {
 	// Guides Filter Selects
 	$('.gf_select').click(function(){
@@ -32,6 +30,11 @@ function originalCode() {
 			$(this).find('.sss_tooltip2').stop(true,true).delay( 300 ).fadeOut();			
 		}
 	);
+
+	$(window).scroll(function(data) {
+		console.log($(window).scrollTop());
+		$(".loginreg_box").css("top", 50 - $(window).scrollTop());
+	})
 
 	$('.fs_input_right_text, .showjoinus').click(function(e){
 		// redirect if redirect data present
